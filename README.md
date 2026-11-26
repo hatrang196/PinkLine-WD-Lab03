@@ -8,7 +8,6 @@ A web development lab project deployed on GitHub Pages.
 ## 🛠️ Technologies Used
 - **HTML5** – Page structure and semantic markup
 - **CSS3** – Styling, layout, and responsive design
-- **JavaScript** – Interactive functionality *(remove if not used)*
 
 ## 🚀 Getting Started
 To run this project locally:
