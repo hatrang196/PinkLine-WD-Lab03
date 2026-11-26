@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PinkLine – quản lý timeline, deadline và ca làm việc bằng HTML và CSS thuần.">
+  <title>PinkLine | Quản lý timeline và deadline</title>
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html#overview"><img src="assets/logo.svg" width="40" height="40" alt=""><span>PinkLine<small>Timeline và deadline</small></span></a>
+      <nav class="nav" aria-label="Điều hướng chính">
+        <a href="#groups">Nhóm việc</a><a href="#timeline">Dòng thời gian</a><a href="#week">Tuần này</a><a href="#tasks">Công việc</a><a class="nav-cta" href="#add-task">Thêm việc</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+
+    <section id="overview" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="today-chip">Thứ Năm, 26/11/2026 – 5 việc đến hạn trong 72 giờ tới</p>
+          <h1>Sợi chỉ hồng kết nối thời gian.</h1>
+          <p class="lead">PinkLine gom bài tập, đồ án và ca làm thêm vào cùng một dòng thời gian để bạn biết hôm nay làm gì và việc nào đến hạn trước.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#timeline">Xem dòng thời gian</a><a class="btn btn-ghost" href="#add-task">Thêm công việc</a></div>
+        </div>
+        <aside class="planner" aria-label="Sổ tay hôm nay">
+          <a class="pin" href="#task-01">WDLab03 còn 2 ngày</a>
+          <p class="planner-date"><strong>Thứ Năm</strong> 26/11/2026</p>
+          <h2 class="planner-h">Hôm nay</h2>
+          <ul class="planner-list">
+<li><a class="pl-item" href="#task-09" data-group="shift" data-status="doing" data-priority="low"><span class="tick" aria-hidden="true"></span><span class="pl-main"><strong>Chốt lịch đổi ca tuần sau</strong><small>Hôm nay, 18:00</small></span><span class="chip">Ca làm</span></a></li>
+          </ul>
+          <h2 class="planner-h">Sắp tới</h2>
+          <ul class="planner-list">
+<li><a class="pl-item" href="#task-12" data-group="shift" data-status="todo" data-priority="medium"><span class="tick" aria-hidden="true"></span><span class="pl-main"><strong>Ca tối quán cà phê</strong><small>Thứ Sáu 27/11, 17:00 – 22:00</small></span><span class="chip">Ca làm</span></a></li>
+<li><a class="pl-item" href="#task-07" data-group="shift" data-status="todo" data-priority="medium"><span class="tick" aria-hidden="true"></span><span class="pl-main"><strong>Ca sáng quán cà phê</strong><small>Thứ Bảy 28/11, 08:00 – 14:00</small></span><span class="chip">Ca làm</span></a></li>
+<li><a class="pl-item" href="#task-01" data-group="study" data-status="doing" data-priority="high"><span class="tick" aria-hidden="true"></span><span class="pl-main"><strong>Nộp bài WDLab03 lên GitHub</strong><small>Thứ Bảy 28/11, 23:59</small></span><span class="chip">Học tập</span></a></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="groups" class="section">
+      <div class="container">
+        <div class="section-head"><h2>Tiến độ theo nhóm</h2><p>Bốn nhóm công việc, mỗi nhóm một màu. Màu này giữ nguyên ở timeline, lịch tuần và danh sách bên dưới.</p></div>
+        <div class="group-grid">
+      <article class="group-card" data-group="study">
+        <img src="assets/icon-study.svg" width="56" height="56" alt="">
+        <div class="group-info"><h3><a href="#tasks">Học tập</a></h3><p>3 công việc, 1 đã hoàn thành</p></div>
+        <div class="task-progress"><progress class="bar" max="100" value="75">75%</progress><span>75%</span></div>
+      </article>
+      <article class="group-card" data-group="project">
+        <img src="assets/icon-project.svg" width="56" height="56" alt="">
+        <div class="group-info"><h3><a href="#tasks">Đồ án</a></h3><p>3 công việc, 0 đã hoàn thành</p></div>
+        <div class="task-progress"><progress class="bar" max="100" value="20">20%</progress><span>20%</span></div>
+      </article>
+      <article class="group-card" data-group="shift">
+        <img src="assets/icon-shift.svg" width="56" height="56" alt="">
+        <div class="group-info"><h3><a href="#tasks">Ca làm</a></h3><p>4 công việc, 0 đã hoàn thành</p></div>
+        <div class="task-progress"><progress class="bar" max="100" value="12">12%</progress><span>12%</span></div>
+      </article>
+      <article class="group-card" data-group="personal">
+        <img src="assets/icon-personal.svg" width="56" height="56" alt="">
+        <div class="group-info"><h3><a href="#tasks">Cá nhân</a></h3><p>2 công việc, 1 đã hoàn thành</p></div>
+        <div class="task-progress"><progress class="bar" max="100" value="50">50%</progress><span>50%</span></div>
+      </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline" class="section section-tint">
+      <div class="container timeline-layout">
+        <div class="timeline-intro">
+          <h2>Dòng thời gian</h2>
+          <p>Các cột mốc ưu tiên cao chưa hoàn thành, xếp theo ngày đến hạn.</p>
+          <div class="donut" style="--pct:36" role="img" aria-label="Tiến độ trung bình 36%"><span>36%</span></div>
+          <p class="donut-cap">Tiến độ trung bình của 12 công việc</p>
+          <dl class="mini-stats">
+            <div><dt>Hoàn thành</dt><dd>2</dd></div>
+            <div><dt>Đang làm</dt><dd>4</dd></div>
+            <div><dt>Chưa bắt đầu</dt><dd>6</dd></div>
+          </dl>
+        </div>
+        <ol class="thread">
+        <li class="milestone" data-group="study" data-status="doing" data-priority="high">
+          <time datetime="2026-11-28">Thứ Bảy, 28/11</time>
+          <div class="ms-card">
+            <h3><a href="#task-01">Nộp bài WDLab03 lên GitHub</a></h3>
+            <p>Hoàn thiện ứng dụng quản lý thứ hai, kiểm tra giao diện điện thoại rồi đẩy mã nguồn lên GitHub và gửi email nộp bài.</p>
+            <div class="ms-foot"><span class="chip">Học tập</span><span class="left">Còn 2 ngày</span></div>
+            <div class="task-progress"><progress class="bar" max="100" value="85">85%</progress><span>85%</span></div>
+          </div>
+        </li>
+        <li class="milestone" data-group="project" data-status="doing" data-priority="high">
+          <time datetime="2026-11-30">Thứ Hai, 30/11</time>
+          <div class="ms-card">
+            <h3><a href="#task-04">Slide thuyết trình đồ án nhóm</a></h3>
+            <p>Tổng hợp nội dung của các thành viên thành 12 slide.</p>
+            <div class="ms-foot"><span class="chip">Đồ án</span><span class="left">Còn 4 ngày</span></div>
+            <div class="task-progress"><progress class="bar" max="100" value="60">60%</progress><span>60%</span></div>
+          </div>
+        </li>
+        <li class="milestone" data-group="study" data-status="doing" data-priority="high">
+          <time datetime="2026-12-02">Thứ Tư, 02/12</time>
+          <div class="ms-card">
+            <h3><a href="#task-02">Ôn thi giữa kỳ Cơ sở dữ liệu</a></h3>
+            <p>Ôn chuẩn hóa, truy vấn SQL nhiều bảng và sơ đồ ER theo đề cương của giảng viên.</p>
+            <div class="ms-foot"><span class="chip">Học tập</span><span class="left">Còn 6 ngày</span></div>
+            <div class="task-progress"><progress class="bar" max="100" value="40">40%</progress><span>40%</span></div>
+          </div>
+        </li>
+        <li class="milestone" data-group="project" data-status="todo" data-priority="high">
+          <time datetime="2026-12-10">Thứ Năm, 10/12</time>
+          <div class="ms-card">
+            <h3><a href="#task-06">Demo sản phẩm</a></h3>
+            <p>Trình diễn các chức năng chính trong 10 phút và trả lời câu hỏi của giảng viên.</p>
+            <div class="ms-foot"><span class="chip">Đồ án</span><span class="left">Còn 14 ngày</span></div>
+            <div class="task-progress"><progress class="bar" max="100" value="0">0%</progress><span>0%</span></div>
+          </div>
+        </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="week" class="section">
+      <div class="container">
+        <div class="section-head"><h2>Lịch tuần 23/11 – 29/11</h2><p>Sắp xếp lịch làm việc theo ngày trong tuần.</p></div>
+        <div class="week-grid">
+      <article class="day">
+        
+        <h3>Thứ Hai <time datetime="2026-11-23">23/11</time></h3>
+        <p class="day-empty">Trống lịch</p>
+      </article>
+      <article class="day">
+        
+        <h3>Thứ Ba <time datetime="2026-11-24">24/11</time></h3>
+        <ul class="slots"><li><a class="slot" href="#task-11" data-group="personal" data-status="done" data-priority="low"><span class="slot-time">16:00</span>Gia hạn thẻ thư viện</a></li></ul>
+      </article>
+      <article class="day">
+        
+        <h3>Thứ Tư <time datetime="2026-11-25">25/11</time></h3>
+        <p class="day-empty">Trống lịch</p>
+      </article>
+      <article class="day is-today" aria-current="date">
+        <span class="today-badge">Hôm nay</span>
+        <h3>Thứ Năm <time datetime="2026-11-26">26/11</time></h3>
+        <ul class="slots"><li><a class="slot" href="#task-09" data-group="shift" data-status="doing" data-priority="low"><span class="slot-time">18:00</span>Chốt lịch đổi ca tuần sau</a></li></ul>
+      </article>
+      <article class="day">
+        
+        <h3>Thứ Sáu <time datetime="2026-11-27">27/11</time></h3>
+        <ul class="slots"><li><a class="slot" href="#task-12" data-group="shift" data-status="todo" data-priority="medium"><span class="slot-time">17:00–22:00</span>Ca tối quán cà phê</a></li></ul>
+      </article>
+      <article class="day">
+        
+        <h3>Thứ Bảy <time datetime="2026-11-28">28/11</time></h3>
+        <ul class="slots"><li><a class="slot" href="#task-07" data-group="shift" data-status="todo" data-priority="medium"><span class="slot-time">08:00–14:00</span>Ca sáng quán cà phê</a></li><li><a class="slot" href="#task-01" data-group="study" data-status="doing" data-priority="high"><span class="slot-time">23:59</span>Nộp bài WDLab03 lên GitHub</a></li></ul>
+      </article>
+      <article class="day">
+        
+        <h3>Chủ nhật <time datetime="2026-11-29">29/11</time></h3>
+        <ul class="slots"><li><a class="slot" href="#task-08" data-group="shift" data-status="todo" data-priority="medium"><span class="slot-time">13:00–18:00</span>Ca chiều quán cà phê</a></li></ul>
+      </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tasks" class="section section-tint">
+      <div class="container board">
+        <div class="section-head"><h2>Tất cả công việc <span class="count-badge">12 việc</span></h2><p>Chọn nhóm và trạng thái để lọc. Hai bộ lọc kết hợp với nhau.</p></div>
+        <input class="f-input" type="radio" name="group" id="g-all" checked><input class="f-input" type="radio" name="group" id="g-study"><input class="f-input" type="radio" name="group" id="g-project"><input class="f-input" type="radio" name="group" id="g-shift"><input class="f-input" type="radio" name="group" id="g-personal">
+        <input class="f-input" type="radio" name="status" id="s-all" checked><input class="f-input" type="radio" name="status" id="s-todo"><input class="f-input" type="radio" name="status" id="s-doing"><input class="f-input" type="radio" name="status" id="s-done">
+        <div class="filter-panel">
+          <div class="filter-row" role="group" aria-label="Lọc theo nhóm"><span class="filter-title">Nhóm</span><label for="g-all">Tất cả <small>12</small></label><label for="g-study">Học tập <small>3</small></label><label for="g-project">Đồ án <small>3</small></label><label for="g-shift">Ca làm <small>4</small></label><label for="g-personal">Cá nhân <small>2</small></label></div>
+          <div class="filter-row" role="group" aria-label="Lọc theo trạng thái"><span class="filter-title">Trạng thái</span><label for="s-all">Tất cả <small>12</small></label><label for="s-todo">Chưa bắt đầu <small>6</small></label><label for="s-doing">Đang làm <small>4</small></label><label for="s-done">Hoàn thành <small>2</small></label></div>
+        </div>
+        <div class="task-grid">
+      <article class="task" data-group="study" data-status="doing" data-priority="high">
+        <header class="task-top"><span class="code">DL-01</span><span class="chip">Học tập</span></header>
+        <h3 class="task-title"><a href="#task-01">Nộp bài WDLab03 lên GitHub</a></h3>
+        <dl class="task-meta">
+          <div><dt>Hạn chót</dt><dd><time datetime="2026-11-28T23:59">28/11, 23:59</time></dd></div>
+          <div><dt>Ưu tiên</dt><dd class="prio">Cao</dd></div>
+          <div><dt>Ước tính</dt><dd>4 giờ</dd></div>
+        </dl>
+        <div class="task-progress"><progress class="bar" max="100" value="85">85%</progress><span>85%</span></div>
+        <footer class="task-foot"><span class="status">Đang làm</span><span class="more">Xem chi tiết</span></footer>
+      </article>
+      <article class="task" data-group="study" data-status="doing" data-priority="high">
+        <header class="task-top"><span class="code">DL-02</span><span class="chip">Học tập</span></header>
+        <h3 class="task-title"><a href="#task-02">Ôn thi giữa kỳ Cơ sở dữ liệu</a></h3>
+        <dl class="task-meta">
+          <div><dt>Hạn chót</dt><dd><time datetime="2026-12-02T07:30">02/12, 07:30</time></dd></div>
+          <div><dt>Ưu tiên</dt><dd class="prio">Cao</dd></div>
+          <div><dt>Ước tính</dt><dd>10 giờ</dd></div>
+        </dl>
+        <div class="task-progress"><progress class="bar" max="100" value="40">40%</progress><span>40%</span></div>
+        <footer class="task-foot"><span class="status">Đang làm</span><span class="more">Xem chi tiết</span></footer>
+      </article>
+      <article class="task" data-group="study" data-status="done" data-priority="medium">
+        <header class="task-top"><span class="code">DL-03</span><span class="chip">Học tập</span></header>
+        <h3 class="task-title"><a href="#task-03">Nộp bài WDLab02</a></h3>
+        <dl class="task-meta">
+          <div><dt>Hạn chót</dt><dd><time datetime="2026-11-14T23:59">14/11, 23:59</time></dd></div>
+          <div><dt>Ưu tiên</dt><dd class="prio">Vừa</dd></div>
+          <div><dt>Ước tính</dt><dd>3 giờ</dd></div>
+        </dl>
+        <div class="task-progress"><progress class="bar" max="100" value="100">100%</progress><span>100%</span></div>
+        <footer class="task-foot"><span class="status">Hoàn thành</span><span class="more">Xem chi tiết</span></footer>
+      </article>
+      <article class="task" data-group="project" data-status="doing" data-priority="high">
+        <header class="task-top"><span class="code">DL-04</span><span class="chip">Đồ án</span></header>
+        <h3 class="task-title"><a href="#task-04">Slide thuyết trình đồ án nhóm</a></h3>
+        <dl class="task-meta">
+          <div><dt>Hạn chót</dt><dd><time datetime="2026-11-30T09:00">30/11, 09:00</time></dd></div>
+          <div><dt>Ưu tiên</dt><dd class="prio">Cao</dd></div>
+          <div><dt>Ước tính</dt><dd>5 giờ</dd></div>
+        </dl>
+        <div class="task-progress"><progress class="bar" max="100" value="60">60%</progress><span>60%</span></div>
+        <footer class="task-foot"><span class="status">Đang làm</span><span class="more">Xem chi tiết</span></footer>
+      </article>
+      <article class="task" data-group="project" data-status="todo" data-priority="medium">
+        <header class="task-top"><span class="code">DL-05</span><span class="chip">Đồ án</span></header>
+        <h3 class="task-title"><a href="#task-05">Viết chương 3 báo cáo đồ án</a></h3>
+        <dl class="task-meta">
+          <div><dt>Hạn chót</dt><dd><time datetime="2026-12-05T23:59">05/12, 23:59</time></dd></div>
+          <div><dt>Ưu tiên</dt><dd class="prio">Vừa</dd></div>
+          <div><dt>Ước tính</dt><dd>8 giờ</dd></div>
+        </dl>
+        <div class="task-progress"><progress class="bar" max="100" value="0">0%</progress><span>0%</span></div>
+        <footer class="task-foot"><span class="status">Chưa bắt đầu</span><span class="more">Xem chi tiết</span></footer>
+      </article>
+      <article class="task" data-group="project" data-status="todo" data-priority="high">
+        <header class="task-top"><span class="code">DL-06</span><span class="chip">Đồ án</span></header>
+        <h3 class="task-title"><a href="#task-06">Demo sản phẩm với giảng viên</a></h3>
+        <dl class="task-meta">
+          <div><dt>Hạn chót</dt><dd><time datetime="2026-12-10T14:00">10/12, 14:00</time></dd></div>
+          <div><dt>Ưu tiên</dt><dd class="prio">Cao</dd></div>
+          <div><dt>Ước tính</dt><dd>2 giờ</dd></div>
+        </dl>
+        <div class="task-progress"><progress class="bar" max="100" value="0">0%</progress><span>0%</span></div>
+        <footer class="task-foot"><span class="status">Chưa bắt đầu</span><span class="more">Xem chi tiết</span></footer>
+      </article>
+      <article class="task" data-group="shift" data-status="todo" data-priority="medium">
+        <header class="task-top"><span class="code">DL-07</span><span class="chip">Ca làm</span></header>
+        <h3 class="task-title"><a href="#task-07">Ca sáng quán cà phê</a></h3>
+        <dl class="task-meta">
+          <div><dt>Hạn chót</dt><dd><time datetime="2026-11-28T08:00">28/11, 08:00 – 14:00</time></dd></div>
+          <div><dt>Ưu tiên</dt><dd class="prio">Vừa</dd></div>
+          <div><dt>Ước tính</dt><dd>6 giờ</dd></div>
+        </dl>
+        <div class="task-progress"><progress class="bar" max="100" value="0">0%</progress><span>0%</span></div>
+        <footer class="task-foot"><span class="status">Chưa bắt đầu</span><span class="more">Xem chi tiết</span></footer>
+      </article>
+      <article class="task" data-group="shift" data-status="todo" data-priority="medium">
+        <header class="task-top"><span class="code">DL-08</span><span class="chip">Ca làm</span></header>
+        <h3 class="task-title"><a href="#task-08">Ca chiều quán cà phê</a></h3>
+        <dl class="task-meta">
+          <div><dt>Hạn chót</dt><dd><time datetime="2026-11-29T13:00">29/11, 13:00 – 18:00</time></dd></div>
+          <div><dt>Ưu tiên</dt><dd class="prio">Vừa</dd></div>
+          <div><dt>Ước tính</dt><dd>5 giờ</dd></div>
+        </dl>
+        <div class="task-progress"><progress class="bar" max="100" value="0">0%</progress><span>0%</span></div>
+        <footer class="task-foot"><span class="status">Chưa bắt đầu</span><span class="more">Xem chi tiết</span></footer>
+      </article>
+      <article class="task" data-group="shift" data-status="doing" data-priority="low">
+        <header class="task-top"><span class="code">DL-09</span><span class="chip">Ca làm</span></header>
+        <h3 class="task-title"><a href="#task-09">Chốt lịch đổi ca tuần sau</a></h3>
+        <dl class="task-meta">
+          <div><dt>Hạn chót</dt><dd><time datetime="2026-11-26T18:00">26/11, 18:00</time></dd></div>
+          <div><dt>Ưu tiên</dt><dd class="prio">Thấp</dd></div>
+          <div><dt>Ước tính</dt><dd>1 giờ</dd></div>
+        </dl>
+        <div class="task-progress"><progress class="bar" max="100" value="50">50%</progress><span>50%</span></div>
+        <footer class="task-foot"><span class="status">Đang làm</span><span class="more">Xem chi tiết</span></footer>
+      </article>
+      <article class="task" data-group="personal" data-status="todo" data-priority="low">
+        <header class="task-top"><span class="code">DL-10</span><span class="chip">Cá nhân</span></header>
+        <h3 class="task-title"><a href="#task-10">Mua quà sinh nhật Mai</a></h3>
+        <dl class="task-meta">
+          <div><dt>Hạn chót</dt><dd><time datetime="2026-12-01T17:00">01/12, 17:00</time></dd></div>
+          <div><dt>Ưu tiên</dt><dd class="prio">Thấp</dd></div>
+          <div><dt>Ước tính</dt><dd>2 giờ</dd></div>
+        </dl>
+        <div class="task-progress"><progress class="bar" max="100" value="0">0%</progress><span>0%</span></div>
+        <footer class="task-foot"><span class="status">Chưa bắt đầu</span><span class="more">Xem chi tiết</span></footer>
+      </article>
+      <article class="task" data-group="personal" data-status="done" data-priority="low">
+        <header class="task-top"><span class="code">DL-11</span><span class="chip">Cá nhân</span></header>
+        <h3 class="task-title"><a href="#task-11">Gia hạn thẻ thư viện</a></h3>
+        <dl class="task-meta">
+          <div><dt>Hạn chót</dt><dd><time datetime="2026-11-24T16:00">24/11, 16:00</time></dd></div>
+          <div><dt>Ưu tiên</dt><dd class="prio">Thấp</dd></div>
+          <div><dt>Ước tính</dt><dd>1 giờ</dd></div>
+        </dl>
+        <div class="task-progress"><progress class="bar" max="100" value="100">100%</progress><span>100%</span></div>
+        <footer class="task-foot"><span class="status">Hoàn thành</span><span class="more">Xem chi tiết</span></footer>
+      </article>
+      <article class="task" data-group="shift" data-status="todo" data-priority="medium">
+        <header class="task-top"><span class="code">DL-12</span><span class="chip">Ca làm</span></header>
+        <h3 class="task-title"><a href="#task-12">Ca tối quán cà phê</a></h3>
+        <dl class="task-meta">
+          <div><dt>Hạn chót</dt><dd><time datetime="2026-11-27T17:00">27/11, 17:00 – 22:00</time></dd></div>
+          <div><dt>Ưu tiên</dt><dd class="prio">Vừa</dd></div>
+          <div><dt>Ước tính</dt><dd>5 giờ</dd></div>
+        </dl>
+        <div class="task-progress"><progress class="bar" max="100" value="0">0%</progress><span>0%</span></div>
+        <footer class="task-foot"><span class="status">Chưa bắt đầu</span><span class="more">Xem chi tiết</span></footer>
+      </article>
+        </div>
+        <p class="hint">Không thấy thẻ nào? Tổ hợp nhóm và trạng thái đang chọn chưa có việc phù hợp, hãy chọn lại “Tất cả”.</p>
+      </div>
+    </section>
+
+    <section id="add-task" class="section">
+      <div class="container form-layout">
+        <div class="form-card">
+          <h2>Thêm công việc mới</h2>
+          <p class="lead-s">Điền thông tin rồi gửi để chuyển sang trang xác nhận.</p>
+          <form class="task-form" action="form-result.html" method="get">
+            <div class="field span-2"><label for="f-title">Tên công việc <span class="req">*</span></label>
+              <input type="text" id="f-title" name="title" required minlength="3" maxlength="80" placeholder="Ví dụ: Nộp báo cáo chương 2"></div>
+            <div class="field"><label for="f-group">Nhóm <span class="req">*</span></label>
+              <select id="f-group" name="group" required><option value="" selected disabled>Chọn nhóm</option><option value="study">Học tập</option><option value="project">Đồ án</option><option value="shift">Ca làm</option><option value="personal">Cá nhân</option></select></div>
+            <div class="field"><label for="f-date">Hạn chót <span class="req">*</span></label>
+              <input type="date" id="f-date" name="deadline" required></div>
+            <div class="field"><label for="f-time">Giờ</label>
+              <input type="time" id="f-time" name="time"></div>
+            <div class="field"><label for="f-hours">Thời lượng ước tính (giờ)</label>
+              <input type="number" id="f-hours" name="hours" min="0.5" max="40" step="0.5" placeholder="2"></div>
+            <fieldset class="field span-2 seg"><legend>Mức ưu tiên</legend>
+              <div class="seg-row">
+                <input type="radio" id="p-high" name="priority" value="high" required><label for="p-high">Cao</label>
+                <input type="radio" id="p-medium" name="priority" value="medium" checked><label for="p-medium">Vừa</label>
+                <input type="radio" id="p-low" name="priority" value="low"><label for="p-low">Thấp</label>
+              </div></fieldset>
+            <fieldset class="field span-2 seg"><legend>Nhắc trước</legend>
+              <div class="seg-row">
+                <input type="checkbox" id="r-day" name="remind" value="1d"><label for="r-day">1 ngày</label>
+                <input type="checkbox" id="r-3h" name="remind" value="3h" checked><label for="r-3h">3 giờ</label>
+                <input type="checkbox" id="r-30m" name="remind" value="30m"><label for="r-30m">30 phút</label>
+              </div></fieldset>
+            <div class="field span-2"><label for="f-note">Ghi chú</label>
+              <textarea id="f-note" name="note" rows="4" maxlength="300" placeholder="Việc cần chuẩn bị, người phối hợp, địa điểm..."></textarea></div>
+            <div class="field span-2"><label for="f-file">Tệp đính kèm (không bắt buộc)</label>
+              <input type="file" id="f-file" name="attachment"></div>
+            <div class="form-actions span-2"><button class="btn btn-ghost" type="reset">Làm mới</button><button class="btn btn-primary" type="submit">Ghi nhận công việc</button></div>
+          </form>
+        </div>
+        <aside class="side-note" aria-label="Lưu ý về biểu mẫu">
+          <h3>Biểu mẫu này làm gì?</h3>
+          <ul>
+            <li>Trình duyệt kiểm tra các ô bắt buộc trước khi gửi.</li>
+            <li>Gửi hợp lệ sẽ chuyển sang trang “Đã ghi nhận thông tin!”.</li>
+            <li>Danh sách vẫn giữ nguyên 12 công việc vì trang không có JavaScript hay cơ sở dữ liệu để lưu thêm.</li>
+          </ul>
+          <h3>Màu theo nhóm</h3>
+          <ul class="legend"><li data-group="study"><span class="dot"></span>Học tập</li><li data-group="project"><span class="dot"></span>Đồ án</li><li data-group="shift"><span class="dot"></span>Ca làm</li><li data-group="personal"><span class="dot"></span>Cá nhân</li></ul>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="modals">
+  <section class="modal" id="task-01" aria-label="Chi tiết DL-01" data-group="study" data-status="doing" data-priority="high">
+    <a class="modal-shade" href="#tasks" aria-label="Đóng chi tiết"></a>
+    <article class="modal-window">
+      <a class="modal-close" href="#tasks" aria-label="Đóng chi tiết">×</a>
+      <header class="modal-head"><span class="code">DL-01</span><span class="chip">Học tập</span><h2>Nộp bài WDLab03 lên GitHub</h2></header>
+      <dl class="detail-grid">
+        <div><dt>Hạn chót</dt><dd>Thứ Bảy, 28/11/2026</dd></div>
+        <div><dt>Giờ</dt><dd>23:59</dd></div>
+        <div><dt>Ưu tiên</dt><dd class="prio">Cao</dd></div>
+        <div><dt>Trạng thái</dt><dd><span class="status">Đang làm</span></dd></div>
+        <div><dt>Ước tính</dt><dd>4 giờ</dd></div>
+        <div><dt>Thời gian còn lại</dt><dd>Còn 2 ngày</dd></div>
+      </dl>
+      <div class="task-progress"><progress class="bar" max="100" value="85">85%</progress><span>85%</span></div>
+      <p>Hoàn thiện ứng dụng quản lý thứ hai, kiểm tra giao diện điện thoại rồi đẩy mã nguồn lên GitHub và gửi email nộp bài.</p>
+      <h3>Các bước thực hiện</h3>
+      <ul class="steps"><li data-step="done">Dựng xong layout và dữ liệu mẫu</li><li data-step="done">Viết biểu mẫu và trang xác nhận</li><li data-step="todo">Kiểm tra màn hình 390 px, push GitHub, gửi email</li></ul>
+      <p class="note"><strong>Ghi chú:</strong> Trùng ngày với ca sáng Thứ Bảy nên cần chốt sớm từ tối Thứ Sáu.</p>
+      <div class="modal-actions"><a class="btn btn-ghost" href="#tasks">Đóng</a><a class="btn btn-primary" href="#add-task">Thêm việc tương tự</a></div>
+    </article>
+  </section>
+  <section class="modal" id="task-02" aria-label="Chi tiết DL-02" data-group="study" data-status="doing" data-priority="high">
+    <a class="modal-shade" href="#tasks" aria-label="Đóng chi tiết"></a>
+    <article class="modal-window">
+      <a class="modal-close" href="#tasks" aria-label="Đóng chi tiết">×</a>
+      <header class="modal-head"><span class="code">DL-02</span><span class="chip">Học tập</span><h2>Ôn thi giữa kỳ Cơ sở dữ liệu</h2></header>
+      <dl class="detail-grid">
+        <div><dt>Hạn chót</dt><dd>Thứ Tư, 02/12/2026</dd></div>
+        <div><dt>Giờ</dt><dd>07:30</dd></div>
+        <div><dt>Ưu tiên</dt><dd class="prio">Cao</dd></div>
+        <div><dt>Trạng thái</dt><dd><span class="status">Đang làm</span></dd></div>
+        <div><dt>Ước tính</dt><dd>10 giờ</dd></div>
+        <div><dt>Thời gian còn lại</dt><dd>Còn 6 ngày</dd></div>
+      </dl>
+      <div class="task-progress"><progress class="bar" max="100" value="40">40%</progress><span>40%</span></div>
+      <p>Ôn chuẩn hóa, truy vấn SQL nhiều bảng và sơ đồ ER theo đề cương của giảng viên.</p>
+      <h3>Các bước thực hiện</h3>
+      <ul class="steps"><li data-step="done">Tổng hợp đề cương</li><li data-step="todo">Làm lại 3 đề thi cũ</li><li data-step="todo">Ôn truy vấn JOIN và GROUP BY</li></ul>
+      <p class="note"><strong>Ghi chú:</strong> Chia mỗi buổi tối 2 giờ và tránh các ngày có ca làm.</p>
+      <div class="modal-actions"><a class="btn btn-ghost" href="#tasks">Đóng</a><a class="btn btn-primary" href="#add-task">Thêm việc tương tự</a></div>
+    </article>
+  </section>
+  <section class="modal" id="task-03" aria-label="Chi tiết DL-03" data-group="study" data-status="done" data-priority="medium">
+    <a class="modal-shade" href="#tasks" aria-label="Đóng chi tiết"></a>
+    <article class="modal-window">
+      <a class="modal-close" href="#tasks" aria-label="Đóng chi tiết">×</a>
+      <header class="modal-head"><span class="code">DL-03</span><span class="chip">Học tập</span><h2>Nộp bài WDLab02</h2></header>
+      <dl class="detail-grid">
+        <div><dt>Hạn chót</dt><dd>Thứ Bảy, 14/11/2026</dd></div>
+        <div><dt>Giờ</dt><dd>23:59</dd></div>
+        <div><dt>Ưu tiên</dt><dd class="prio">Vừa</dd></div>
+        <div><dt>Trạng thái</dt><dd><span class="status">Hoàn thành</span></dd></div>
+        <div><dt>Ước tính</dt><dd>3 giờ</dd></div>
+        <div><dt>Thời gian còn lại</dt><dd>Đã xong</dd></div>
+      </dl>
+      <div class="task-progress"><progress class="bar" max="100" value="100">100%</progress><span>100%</span></div>
+      <p>Bài HTML thuần gồm bảng, danh sách và biểu mẫu, đã nộp đúng hạn.</p>
+      <h3>Các bước thực hiện</h3>
+      <ul class="steps"><li data-step="done">Viết xong các trang HTML</li><li data-step="done">Kiểm tra liên kết</li><li data-step="done">Nộp bài</li></ul>
+      <p class="note"><strong>Ghi chú:</strong> Có thể tái sử dụng cấu trúc biểu mẫu cho WDLab03.</p>
+      <div class="modal-actions"><a class="btn btn-ghost" href="#tasks">Đóng</a><a class="btn btn-primary" href="#add-task">Thêm việc tương tự</a></div>
+    </article>
+  </section>
+  <section class="modal" id="task-04" aria-label="Chi tiết DL-04" data-group="project" data-status="doing" data-priority="high">
+    <a class="modal-shade" href="#tasks" aria-label="Đóng chi tiết"></a>
+    <article class="modal-window">
+      <a class="modal-close" href="#tasks" aria-label="Đóng chi tiết">×</a>
+      <header class="modal-head"><span class="code">DL-04</span><span class="chip">Đồ án</span><h2>Slide thuyết trình đồ án nhóm</h2></header>
+      <dl class="detail-grid">
+        <div><dt>Hạn chót</dt><dd>Thứ Hai, 30/11/2026</dd></div>
+        <div><dt>Giờ</dt><dd>09:00</dd></div>
+        <div><dt>Ưu tiên</dt><dd class="prio">Cao</dd></div>
+        <div><dt>Trạng thái</dt><dd><span class="status">Đang làm</span></dd></div>
+        <div><dt>Ước tính</dt><dd>5 giờ</dd></div>
+        <div><dt>Thời gian còn lại</dt><dd>Còn 4 ngày</dd></div>
+      </dl>
+      <div class="task-progress"><progress class="bar" max="100" value="60">60%</progress><span>60%</span></div>
+      <p>Tổng hợp nội dung của các thành viên thành 12 slide cùng màu sắc và phông chữ.</p>
+      <h3>Các bước thực hiện</h3>
+      <ul class="steps"><li data-step="done">Chốt dàn ý 12 slide</li><li data-step="done">Hoàn thành slide 1 đến 7</li><li data-step="todo">Hoàn thành slide 8 đến 12 và luyện nói</li></ul>
+      <p class="note"><strong>Ghi chú:</strong> Gửi bản nháp vào nhóm trước tối Chủ nhật.</p>
+      <div class="modal-actions"><a class="btn btn-ghost" href="#tasks">Đóng</a><a class="btn btn-primary" href="#add-task">Thêm việc tương tự</a></div>
+    </article>
+  </section>
+  <section class="modal" id="task-05" aria-label="Chi tiết DL-05" data-group="project" data-status="todo" data-priority="medium">
+    <a class="modal-shade" href="#tasks" aria-label="Đóng chi tiết"></a>
+    <article class="modal-window">
+      <a class="modal-close" href="#tasks" aria-label="Đóng chi tiết">×</a>
+      <header class="modal-head"><span class="code">DL-05</span><span class="chip">Đồ án</span><h2>Viết chương 3 báo cáo đồ án</h2></header>
+      <dl class="detail-grid">
+        <div><dt>Hạn chót</dt><dd>Thứ Bảy, 05/12/2026</dd></div>
+        <div><dt>Giờ</dt><dd>23:59</dd></div>
+        <div><dt>Ưu tiên</dt><dd class="prio">Vừa</dd></div>
+        <div><dt>Trạng thái</dt><dd><span class="status">Chưa bắt đầu</span></dd></div>
+        <div><dt>Ước tính</dt><dd>8 giờ</dd></div>
+        <div><dt>Thời gian còn lại</dt><dd>Còn 9 ngày</dd></div>
+      </dl>
+      <div class="task-progress"><progress class="bar" max="100" value="0">0%</progress><span>0%</span></div>
+      <p>Trình bày thiết kế hệ thống gồm sơ đồ chức năng, cơ sở dữ liệu và giao diện chính.</p>
+      <h3>Các bước thực hiện</h3>
+      <ul class="steps"><li data-step="todo">Vẽ sơ đồ chức năng</li><li data-step="todo">Mô tả các bảng dữ liệu</li><li data-step="todo">Chèn ảnh giao diện kèm chú thích</li></ul>
+      <p class="note"><strong>Ghi chú:</strong> Chờ nhóm chốt sơ đồ ER rồi mới bắt đầu.</p>
+      <div class="modal-actions"><a class="btn btn-ghost" href="#tasks">Đóng</a><a class="btn btn-primary" href="#add-task">Thêm việc tương tự</a></div>
+    </article>
+  </section>
+  <section class="modal" id="task-06" aria-label="Chi tiết DL-06" data-group="project" data-status="todo" data-priority="high">
+    <a class="modal-shade" href="#tasks" aria-label="Đóng chi tiết"></a>
+    <article class="modal-window">
+      <a class="modal-close" href="#tasks" aria-label="Đóng chi tiết">×</a>
+      <header class="modal-head"><span class="code">DL-06</span><span class="chip">Đồ án</span><h2>Demo sản phẩm với giảng viên</h2></header>
+      <dl class="detail-grid">
+        <div><dt>Hạn chót</dt><dd>Thứ Năm, 10/12/2026</dd></div>
+        <div><dt>Giờ</dt><dd>14:00</dd></div>
+        <div><dt>Ưu tiên</dt><dd class="prio">Cao</dd></div>
+        <div><dt>Trạng thái</dt><dd><span class="status">Chưa bắt đầu</span></dd></div>
+        <div><dt>Ước tính</dt><dd>2 giờ</dd></div>
+        <div><dt>Thời gian còn lại</dt><dd>Còn 14 ngày</dd></div>
+      </dl>
+      <div class="task-progress"><progress class="bar" max="100" value="0">0%</progress><span>0%</span></div>
+      <p>Trình diễn các chức năng chính trong 10 phút và trả lời câu hỏi của giảng viên.</p>
+      <h3>Các bước thực hiện</h3>
+      <ul class="steps"><li data-step="todo">Viết kịch bản demo 10 phút</li><li data-step="todo">Chạy thử toàn bộ luồng trên máy trình chiếu</li><li data-step="todo">Chuẩn bị 5 câu hỏi dự kiến</li></ul>
+      <p class="note"><strong>Ghi chú:</strong> Mỗi thành viên phụ trách một chức năng.</p>
+      <div class="modal-actions"><a class="btn btn-ghost" href="#tasks">Đóng</a><a class="btn btn-primary" href="#add-task">Thêm việc tương tự</a></div>
+    </article>
+  </section>
+  <section class="modal" id="task-07" aria-label="Chi tiết DL-07" data-group="shift" data-status="todo" data-priority="medium">
+    <a class="modal-shade" href="#tasks" aria-label="Đóng chi tiết"></a>
+    <article class="modal-window">
+      <a class="modal-close" href="#tasks" aria-label="Đóng chi tiết">×</a>
+      <header class="modal-head"><span class="code">DL-07</span><span class="chip">Ca làm</span><h2>Ca sáng quán cà phê</h2></header>
+      <dl class="detail-grid">
+        <div><dt>Hạn chót</dt><dd>Thứ Bảy, 28/11/2026</dd></div>
+        <div><dt>Giờ</dt><dd>08:00 – 14:00</dd></div>
+        <div><dt>Ưu tiên</dt><dd class="prio">Vừa</dd></div>
+        <div><dt>Trạng thái</dt><dd><span class="status">Chưa bắt đầu</span></dd></div>
+        <div><dt>Ước tính</dt><dd>6 giờ</dd></div>
+        <div><dt>Thời gian còn lại</dt><dd>Còn 2 ngày</dd></div>
+      </dl>
+      <div class="task-progress"><progress class="bar" max="100" value="0">0%</progress><span>0%</span></div>
+      <p>Ca pha chế và phục vụ tại quầy, kết thúc lúc 14:00.</p>
+      <h3>Các bước thực hiện</h3>
+      <ul class="steps"><li data-step="todo">Có mặt lúc 07:45</li><li data-step="todo">Kiểm kê nguyên liệu đầu ca</li><li data-step="todo">Bàn giao cho ca chiều</li></ul>
+      <p class="note"><strong>Ghi chú:</strong> Sau ca dành buổi tối để hoàn thiện WDLab03.</p>
+      <div class="modal-actions"><a class="btn btn-ghost" href="#tasks">Đóng</a><a class="btn btn-primary" href="#add-task">Thêm việc tương tự</a></div>
+    </article>
+  </section>
+  <section class="modal" id="task-08" aria-label="Chi tiết DL-08" data-group="shift" data-status="todo" data-priority="medium">
+    <a class="modal-shade" href="#tasks" aria-label="Đóng chi tiết"></a>
+    <article class="modal-window">
+      <a class="modal-close" href="#tasks" aria-label="Đóng chi tiết">×</a>
+      <header class="modal-head"><span class="code">DL-08</span><span class="chip">Ca làm</span><h2>Ca chiều quán cà phê</h2></header>
+      <dl class="detail-grid">
+        <div><dt>Hạn chót</dt><dd>Chủ nhật, 29/11/2026</dd></div>
+        <div><dt>Giờ</dt><dd>13:00 – 18:00</dd></div>
+        <div><dt>Ưu tiên</dt><dd class="prio">Vừa</dd></div>
+        <div><dt>Trạng thái</dt><dd><span class="status">Chưa bắt đầu</span></dd></div>
+        <div><dt>Ước tính</dt><dd>5 giờ</dd></div>
+        <div><dt>Thời gian còn lại</dt><dd>Còn 3 ngày</dd></div>
+      </dl>
+      <div class="task-progress"><progress class="bar" max="100" value="0">0%</progress><span>0%</span></div>
+      <p>Ca thu ngân và dọn quầy cuối ngày.</p>
+      <h3>Các bước thực hiện</h3>
+      <ul class="steps"><li data-step="todo">Có mặt lúc 12:45</li><li data-step="todo">Đối soát doanh thu cuối ca</li><li data-step="todo">Dọn quầy và khóa cửa</li></ul>
+      <p class="note"><strong>Ghi chú:</strong> Cuối ca gửi bản nháp slide cho nhóm.</p>
+      <div class="modal-actions"><a class="btn btn-ghost" href="#tasks">Đóng</a><a class="btn btn-primary" href="#add-task">Thêm việc tương tự</a></div>
+    </article>
+  </section>
+  <section class="modal" id="task-09" aria-label="Chi tiết DL-09" data-group="shift" data-status="doing" data-priority="low">
+    <a class="modal-shade" href="#tasks" aria-label="Đóng chi tiết"></a>
+    <article class="modal-window">
+      <a class="modal-close" href="#tasks" aria-label="Đóng chi tiết">×</a>
+      <header class="modal-head"><span class="code">DL-09</span><span class="chip">Ca làm</span><h2>Chốt lịch đổi ca tuần sau</h2></header>
+      <dl class="detail-grid">
+        <div><dt>Hạn chót</dt><dd>Thứ Năm, 26/11/2026</dd></div>
+        <div><dt>Giờ</dt><dd>18:00</dd></div>
+        <div><dt>Ưu tiên</dt><dd class="prio">Thấp</dd></div>
+        <div><dt>Trạng thái</dt><dd><span class="status">Đang làm</span></dd></div>
+        <div><dt>Ước tính</dt><dd>1 giờ</dd></div>
+        <div><dt>Thời gian còn lại</dt><dd>Hôm nay</dd></div>
+      </dl>
+      <div class="task-progress"><progress class="bar" max="100" value="50">50%</progress><span>50%</span></div>
+      <p>Trao đổi với quản lý để đổi ca ngày 02/12 vì trùng lịch thi.</p>
+      <h3>Các bước thực hiện</h3>
+      <ul class="steps"><li data-step="done">Nhắn quản lý về lịch thi</li><li data-step="todo">Tìm bạn đổi ca</li><li data-step="todo">Xác nhận lại trong nhóm chat</li></ul>
+      <p class="note"><strong>Ghi chú:</strong> Nếu chưa ai đổi được, xin nghỉ có phép trước 18:00 hôm nay.</p>
+      <div class="modal-actions"><a class="btn btn-ghost" href="#tasks">Đóng</a><a class="btn btn-primary" href="#add-task">Thêm việc tương tự</a></div>
+    </article>
+  </section>
+  <section class="modal" id="task-10" aria-label="Chi tiết DL-10" data-group="personal" data-status="todo" data-priority="low">
+    <a class="modal-shade" href="#tasks" aria-label="Đóng chi tiết"></a>
+    <article class="modal-window">
+      <a class="modal-close" href="#tasks" aria-label="Đóng chi tiết">×</a>
+      <header class="modal-head"><span class="code">DL-10</span><span class="chip">Cá nhân</span><h2>Mua quà sinh nhật Mai</h2></header>
+      <dl class="detail-grid">
+        <div><dt>Hạn chót</dt><dd>Thứ Ba, 01/12/2026</dd></div>
+        <div><dt>Giờ</dt><dd>17:00</dd></div>
+        <div><dt>Ưu tiên</dt><dd class="prio">Thấp</dd></div>
+        <div><dt>Trạng thái</dt><dd><span class="status">Chưa bắt đầu</span></dd></div>
+        <div><dt>Ước tính</dt><dd>2 giờ</dd></div>
+        <div><dt>Thời gian còn lại</dt><dd>Còn 5 ngày</dd></div>
+      </dl>
+      <div class="task-progress"><progress class="bar" max="100" value="0">0%</progress><span>0%</span></div>
+      <p>Chọn một món quà nhỏ và gói quà trước ngày sinh nhật của Mai.</p>
+      <h3>Các bước thực hiện</h3>
+      <ul class="steps"><li data-step="todo">Chốt ngân sách</li><li data-step="todo">Chọn và mua quà</li><li data-step="todo">Gói quà và viết thiệp</li></ul>
+      <p class="note"><strong>Ghi chú:</strong> Nên mua sau ca làm để tiện đường.</p>
+      <div class="modal-actions"><a class="btn btn-ghost" href="#tasks">Đóng</a><a class="btn btn-primary" href="#add-task">Thêm việc tương tự</a></div>
+    </article>
+  </section>
+  <section class="modal" id="task-11" aria-label="Chi tiết DL-11" data-group="personal" data-status="done" data-priority="low">
+    <a class="modal-shade" href="#tasks" aria-label="Đóng chi tiết"></a>
+    <article class="modal-window">
+      <a class="modal-close" href="#tasks" aria-label="Đóng chi tiết">×</a>
+      <header class="modal-head"><span class="code">DL-11</span><span class="chip">Cá nhân</span><h2>Gia hạn thẻ thư viện</h2></header>
+      <dl class="detail-grid">
+        <div><dt>Hạn chót</dt><dd>Thứ Ba, 24/11/2026</dd></div>
+        <div><dt>Giờ</dt><dd>16:00</dd></div>
+        <div><dt>Ưu tiên</dt><dd class="prio">Thấp</dd></div>
+        <div><dt>Trạng thái</dt><dd><span class="status">Hoàn thành</span></dd></div>
+        <div><dt>Ước tính</dt><dd>1 giờ</dd></div>
+        <div><dt>Thời gian còn lại</dt><dd>Đã xong</dd></div>
+      </dl>
+      <div class="task-progress"><progress class="bar" max="100" value="100">100%</progress><span>100%</span></div>
+      <p>Thẻ thư viện đã được gia hạn đến hết học kỳ sau.</p>
+      <h3>Các bước thực hiện</h3>
+      <ul class="steps"><li data-step="done">Chuẩn bị thẻ sinh viên</li><li data-step="done">Nộp phí gia hạn</li><li data-step="done">Nhận thẻ mới</li></ul>
+      <p class="note"><strong>Ghi chú:</strong> Có thể mượn tài liệu ôn thi từ tuần này.</p>
+      <div class="modal-actions"><a class="btn btn-ghost" href="#tasks">Đóng</a><a class="btn btn-primary" href="#add-task">Thêm việc tương tự</a></div>
+    </article>
+  </section>
+  <section class="modal" id="task-12" aria-label="Chi tiết DL-12" data-group="shift" data-status="todo" data-priority="medium">
+    <a class="modal-shade" href="#tasks" aria-label="Đóng chi tiết"></a>
+    <article class="modal-window">
+      <a class="modal-close" href="#tasks" aria-label="Đóng chi tiết">×</a>
+      <header class="modal-head"><span class="code">DL-12</span><span class="chip">Ca làm</span><h2>Ca tối quán cà phê</h2></header>
+      <dl class="detail-grid">
+        <div><dt>Hạn chót</dt><dd>Thứ Sáu, 27/11/2026</dd></div>
+        <div><dt>Giờ</dt><dd>17:00 – 22:00</dd></div>
+        <div><dt>Ưu tiên</dt><dd class="prio">Vừa</dd></div>
+        <div><dt>Trạng thái</dt><dd><span class="status">Chưa bắt đầu</span></dd></div>
+        <div><dt>Ước tính</dt><dd>5 giờ</dd></div>
+        <div><dt>Thời gian còn lại</dt><dd>Còn 1 ngày</dd></div>
+      </dl>
+      <div class="task-progress"><progress class="bar" max="100" value="0">0%</progress><span>0%</span></div>
+      <p>Ca phục vụ giờ cao điểm buổi tối, kết thúc lúc 22:00.</p>
+      <h3>Các bước thực hiện</h3>
+      <ul class="steps"><li data-step="todo">Có mặt lúc 16:45</li><li data-step="todo">Phục vụ khu bàn trong nhà</li><li data-step="todo">Vệ sinh khu vực được giao</li></ul>
+      <p class="note"><strong>Ghi chú:</strong> Chuẩn bị sẵn đồ dùng cho ngày làm bài Thứ Bảy.</p>
+      <div class="modal-actions"><a class="btn btn-ghost" href="#tasks">Đóng</a><a class="btn btn-primary" href="#add-task">Thêm việc tương tự</a></div>
+    </article>
+  </section>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-brand">PinkLine</p>
+      <p>Bài thực hành WDLab03, Phần 2: ứng dụng quản lý timeline và deadline. Chỉ dùng HTML5 và CSS.</p>
+      <p>Sinh viên thực hiện: Trần Hà Trang – 22110233</p>
+    </div>
+  </footer>
+</body>
+</html>
